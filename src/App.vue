@@ -1,30 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="md:container md:max-w-screen-xl md:px-20 md:mx-auto md:mt-5">
+    <NavBar />
+
+    <router-view v-slot="{ Component }">
+      <transition name="scale" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+
+    <MyFooter />
+  </div>
 </template>
 
+<script>
+import NavBar from "./components/NavBar.vue";
+import MyFooter from "./components/MyFooter.vue";
+
+export default {
+  name: "App",
+  components: {
+    NavBar,
+    MyFooter,
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.5s ease;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
 }
 </style>
