@@ -5,7 +5,7 @@
 
 
     <div class="md:flex">
-    <div class="bg-neutral p-5 rounded-xl max-w-full mt-5 md:mr-4 text-white">
+    <div class="bg-neutral p-5 rounded-xl max-w-full mt-5 md:mr-4 text-white max-h-[65vh]">
       <h2 class="text-2xl text-center font-semibold">Filter</h2>
 
       <div class="dui-divider my-0"></div>
@@ -129,7 +129,6 @@ export default {
         }
       }
       this.filter = true;
-        
     },
   },
   created() {
