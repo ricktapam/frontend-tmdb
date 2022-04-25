@@ -30,6 +30,10 @@
 
       <div class="dui-divider"></div>
 
+      <p class="text-xl"><b>Trailer</b></p>
+          <MovieTrailer class="mt-5"/>
+      <div class="dui-divider"></div>
+
       <p class="text-xl"><b>Cast:&nbsp;</b></p>
       <div class="flex">
         <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-5">
@@ -56,6 +60,9 @@
 const { MovieDb } = require("moviedb-promise");
 const moviedb = new MovieDb("17e6273050ea3134a10b4dc39a15bfff");
 
+import MovieTrailer from "@/components/MovieTrailer.vue";
+
+
 export default {
   name: "MovieDetail",
 
@@ -67,14 +74,16 @@ export default {
     };
   },
 
-  components: {},
+  components: {
+    MovieTrailer,
+  },
 
   methods: {
     async getData() {
       try {
         const data = await moviedb.movieInfo({ id: this.$route.params.id });
         this.details = data;
-        console.log(data);
+        //console.log(data);
       } catch (error) {
         console.log(error);
       }
