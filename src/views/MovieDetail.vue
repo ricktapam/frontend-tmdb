@@ -26,7 +26,7 @@
 
       <div class="dui-divider"></div>
 
-      <p class="text-2xl">{{ details.overview }}</p>
+      <p class="text-xl">{{ details.overview }}</p>
 
       <div class="dui-divider"></div>
 

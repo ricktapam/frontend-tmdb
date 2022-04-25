@@ -3,7 +3,7 @@
     <div>
       <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
         <div
-          v-for="movie in movies.slice(0, 5)"
+          v-for="movie in movies.slice(0, 20)"
           v-bind:key="movie.id"
           class="dui-card dui-card-compact mb-10 bg-base-300 shadow-gray-800 shadow-lg"
         >
