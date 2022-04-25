@@ -52,6 +52,35 @@
           </div>
         </div>
       </div>
+
+      <div class="dui-divider"></div>
+            <p class="text-xl"><b>Recommended movies:</b></p>
+
+      <div class="flex">
+        <div class="grid grid-cols-3 gap-4 md:grid-cols-6 mt-5">
+      <div
+        v-for="sim in similar.slice(0, 6)"
+        v-bind:key="sim.id"
+        class="dui-card dui-card-compact mb-10 bg-base-300 shadow-gray-800 shadow-lg"
+      >
+        <router-link :to="`/movie/${sim.id}`"
+              ><figure><img v-bind:src="`https://image.tmdb.org/t/p/w500${sim.poster_path}`" /></figure></router-link>
+        <div class="dui-card-body">
+          <router-link :to="`/movie/${sim.id}`"
+              ><h2 class="dui-card-title">{{ sim.original_title }}</h2></router-link>
+          <p class="md:hidden"></p>
+          <p class="hidden md:block">{{ sim.overview.substring(0, 125) }}...</p>
+          <div class="dui-card-actions justify-end">
+            <router-link :to="`/movie/${sim.id}`"
+              ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -70,6 +99,7 @@ export default {
     return {
       details: [],
       actors: [],
+      similar: [],
       showLessMovies: true,
     };
   },
@@ -97,10 +127,20 @@ export default {
         console.log(error);
       }
     },
+    async movieSimilar() {
+      try {
+        const data = await moviedb.movieRecommendations({ id: this.$route.params.id });
+        this.similar = data.results;
+        console.log(data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   created() {
     this.getData();
     this.getCredits();
+    this.movieSimilar();
   },
 };
 </script>

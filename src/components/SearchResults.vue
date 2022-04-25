@@ -100,7 +100,7 @@ export default {
       filteredMovies: [],
       filter: false,
       searchQuery: "",
-      minRating: 5,
+      minRating: 0,
       maxRating: 10,
       minRelease: 1910,
       maxRelease: 2022,
