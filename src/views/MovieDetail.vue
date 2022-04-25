@@ -6,6 +6,7 @@
         class="mt-5 mb-5 rounded-xl"
       />
       <h1 class="text-4xl md:text-6xl text-white">{{ details.original_title }}</h1>
+      <h1 v-if=details.tagline class="text-xl md:text-2xl text-white mt-2"><i>{{ details.tagline }}</i></h1>
 
       <div class="dui-divider"></div>
 
@@ -73,7 +74,7 @@ export default {
       try {
         const data = await moviedb.movieInfo({ id: this.$route.params.id });
         this.details = data;
-        //console.log(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }

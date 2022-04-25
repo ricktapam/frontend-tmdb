@@ -7,7 +7,8 @@
       v-bind:key="movie.id"
       class="dui-card dui-card-compact mb-10 bg-base-300 shadow-gray-800 shadow-lg"
     >
-      <figure><img v-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" /></figure>
+      <router-link :to="`/movie/${movie.id}`"
+              ><figure><img v-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" /></figure></router-link>
       <div class="dui-card-body">
         <h2 class="dui-card-title">{{ movie.original_title }}</h2>
         <p class="md:hidden"></p>
