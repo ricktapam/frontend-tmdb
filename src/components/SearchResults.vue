@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-[95%] mx-auto md:max-w-full">
     <h1 class="text-white text-3xl mt-5">Showing results for: {{this.$route.params.query}}</h1>
+    <div class="dui-divider my-0"></div>
+
 
     <div class="md:flex">
     <div class="bg-neutral p-5 rounded-xl max-w-full mt-5 md:mr-4 text-white">
@@ -10,9 +12,9 @@
 
       <h3 class="text-lg text-center">Rating</h3>
       <p>Min: {{minRating}}</p>
-      <input type="range" min="1" max="10" v-model="minRating" class="min-w-full">
+      <input type="range" min="0" max="10" v-model="minRating" class="min-w-full">
       <p>Max: {{maxRating}}</p>
-      <input type="range" min="1" max="10" v-model="maxRating" class="min-w-full">
+      <input type="range" min="0" max="10" v-model="maxRating" class="min-w-full">
 
       <div class="dui-divider my-0"></div>
 
@@ -21,10 +23,14 @@
       <input type="range" min="1910" max="2022" v-model="minRelease" class="min-w-full">
       <p>Max: {{maxRelease}}</p>
       <input type="range" min="1910" max="2022" v-model="maxRelease" class="min-w-full">
+
+      <div class="dui-divider my-0"></div>
+
+      <button class="dui-btn dui-btn-primary max-w-[95%] mt-4" v-on:click="FilterMovies">Filter</button>
     </div>
 
 
-    <div>
+    <div v-if="!filter">
       <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4 mt-5">
         <div
           v-for="movie in movies.slice(0, 20)"
@@ -48,6 +54,33 @@
         </div>
       </div>
     </div>
+
+<div v-else>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4 mt-5">
+        <div
+          v-for="filteredmovie in filteredMovies"
+          v-bind:key="filteredmovie.id"
+          class="dui-card dui-card-compact mb-10 bg-base-300 shadow-gray-800 shadow-lg"
+        >
+          <router-link :to="`/movie/${filteredmovie.id}`"
+              ><figure>
+            <img v-bind:src="`https://image.tmdb.org/t/p/w500${filteredmovie.poster_path}`" />
+          </figure></router-link>
+          <div class="dui-card-body">
+            <h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2>
+            <p class="md:hidden"></p>
+            <p class="hidden md:block">{{ filteredmovie.overview.substring(0, 150) }}...</p>
+            <div class="dui-card-actions justify-end">
+              <router-link :to="`/movie/${filteredmovie.id}`"
+                ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     </div>
   </div>
 </template>
@@ -62,6 +95,8 @@ export default {
   data() {
     return {
       movies: [],
+      filteredMovies: [],
+      filter: false,
       searchQuery: "",
       minRating: 5,
       maxRating: 10,
@@ -76,13 +111,25 @@ export default {
     async SearchMovies() {
       try {
         this.searchQuery = this.$route.params.query;
-        const data = await moviedb.searchMovie({ query: this.$route.params.query });
+        const data = await moviedb.searchMovie({ query: this.$route.params.query});
         this.movies = data.results;
         console.log(data);
         this.$forceUpdate();
       } catch (error) {
         console.log(error);
       }
+    },
+    FilterMovies() {
+      this.filteredMovies = [];
+      for(var i=0; i<this.movies.length; i++){
+        if(this.movies[i].vote_average <= this.maxRating && this.movies[i].vote_average >= this.minRating
+        && this.movies[i].release_date.slice(0,4) <= this.maxRelease && this.movies[i].release_date.slice(0,4) >= this.minRelease){
+          this.filteredMovies.push(this.movies[i]);
+          console.log(this.movies[i])
+        }
+      }
+      this.filter = true;
+        
     },
   },
   created() {
