@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <button class="dui-btn dui-btn-primary" v-on:click="showMoreLess(this)">Show More</button>
+  <button class="dui-btn dui-btn-primary" v-on:click="showMoreLess(this)">{{buttonText}}</button>
 
   <div class="dui-divider"></div>
 </template>
@@ -61,6 +61,7 @@ export default {
     return {
       movies: [],
       showLessMovies: true,
+      buttonText: "Show More",
     };
   },
 
@@ -75,11 +76,12 @@ export default {
       }
     },
 
-    showMoreLess(button) {
+    showMoreLess() {
       if (this.showLessMovies === true) {
+        this.buttonText = "Show Less";
         this.showLessMovies = false;
-        button.value = "show less";
       } else {
+        this.buttonText = "Show More";
         this.showLessMovies = true;
       }
     },
