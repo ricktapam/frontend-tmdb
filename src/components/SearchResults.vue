@@ -42,7 +42,8 @@
             <img v-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
           </figure></router-link>
           <div class="dui-card-body">
-            <h2 class="dui-card-title">{{ movie.original_title }}</h2>
+            <router-link :to="`/movie/${movie.id}`"
+              ><h2 class="dui-card-title">{{ movie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ movie.overview.substring(0, 150) }}...</p>
             <div class="dui-card-actions justify-end">
@@ -67,7 +68,8 @@
             <img v-bind:src="`https://image.tmdb.org/t/p/w500${filteredmovie.poster_path}`" />
           </figure></router-link>
           <div class="dui-card-body">
-            <h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2>
+            <router-link :to="`/movie/${movie.id}`"
+              ><h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ filteredmovie.overview.substring(0, 150) }}...</p>
             <div class="dui-card-actions justify-end">
