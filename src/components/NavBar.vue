@@ -53,6 +53,7 @@
             placeholder="Search…"
             class="dui-input dui-input-bordered min-w-[80%]"
             v-model="searchInput"
+            @keyup.enter="onSubmit"
           />
           <router-link :to="`/search/${searchInput}`">
             <button class="dui-btn dui-btn-square bg-primary hover:bg-primary-focus" type="submit">
@@ -100,6 +101,9 @@ export default {
       //? ((e.name = "close"), list.classList.add("top-[80px]"), list.classList.add("opacity-100"))
       //: ((e.name = "menu"), list.classList.remove("top-[80px]"), list.classList.add("opacity-0"));
     },
+    onSubmit(){
+      this.$router.push("/search/" + this.searchInput);
+    }
   },
   name: "NavBar",
 };
