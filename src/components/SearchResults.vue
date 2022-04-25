@@ -1,5 +1,6 @@
 <template>
   <div class="max-w-[95%] mx-auto md:max-w-full">
+    <h1 class="text-white text-3xl mt-5">Showing results for: {{this.$route.params.query}}</h1>
     <div>
       <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
         <div
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       movies: [],
+      searchQuery: "",
     };
   },
 
@@ -44,6 +46,7 @@ export default {
   methods: {
     async SearchMovies() {
       try {
+        this.searchQuery = this.$route.params.query;
         const data = await moviedb.searchMovie({ query: this.$route.params.query });
         this.movies = data.results;
         console.log(data);
