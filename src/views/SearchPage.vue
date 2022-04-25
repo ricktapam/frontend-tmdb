@@ -1,5 +1,8 @@
 <template>
+<router-view :key="$route.fullPath">
   <SearchResults />
+</router-view>
+  
 </template>
 
 <script>

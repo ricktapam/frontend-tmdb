@@ -102,6 +102,7 @@ export default {
     onSubmit(){
       this.searchInput = this.searchInput.replace(/\s+/g, '-');
       this.$router.push("/search/" + this.searchInput);
+      
     }
   },
   name: "NavBar",
