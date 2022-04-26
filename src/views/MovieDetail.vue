@@ -38,7 +38,7 @@
       <div class="flex">
         <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-5">
           <div
-            v-for="actor in actors.splice(0, 5)"
+            v-for="actor in actorsSorted.splice(0, 5)"
             v-bind:key="actor.id"
             class="dui-card dui-card-compact mr-4 mb-10 bg-base-300 shadow-gray-800 shadow-lg"
           >
@@ -99,6 +99,7 @@ export default {
     return {
       details: [],
       actors: [],
+      actorsSorted: [],
       similar: [],
       showLessMovies: true,
     };
@@ -122,7 +123,12 @@ export default {
       try {
         const data = await moviedb.movieCredits({ id: this.$route.params.id });
         this.actors = data.cast;
-        //console.log(this.actors)
+        for(var i=0; i<this.actors.length; i++){
+          if(this.actors[i].order <= 10){
+            this.actorsSorted.push(this.actors[i])
+          }
+        }
+        console.log(this.actors)
       } catch (error) {
         console.log(error);
       }
