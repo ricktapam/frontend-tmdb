@@ -1,8 +1,9 @@
 <template>
+
   <div class="md:container md:max-w-screen-xl md:px-20 md:mx-auto md:mt-5">
     <NavBar />
 
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }" :key="$route.fullPath">
       <transition name="scale" mode="out-in">
         <component :is="Component" />
       </transition>

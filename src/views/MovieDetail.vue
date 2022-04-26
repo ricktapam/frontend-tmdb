@@ -122,7 +122,7 @@ export default {
       try {
         const data = await moviedb.movieCredits({ id: this.$route.params.id });
         this.actors = data.cast;
-        //console.log(data);
+        //console.log(this.actors)
       } catch (error) {
         console.log(error);
       }
@@ -131,7 +131,7 @@ export default {
       try {
         const data = await moviedb.movieRecommendations({ id: this.$route.params.id });
         this.similar = data.results;
-        console.log(data.results);
+        //console.log(data.results);
       } catch (error) {
         console.log(error);
       }
