@@ -63,7 +63,7 @@
             <img v-bind:src="`https://image.tmdb.org/t/p/w500${filteredmovie.poster_path}`" />
           </figure></router-link>
           <div class="dui-card-body">
-            <router-link :to="`/movie/${movie.id}`"
+            <router-link :to="`/movie/${filteredmovie.id}`"
               ><h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ filteredmovie.overview.substring(0, 150) }}...</p>
@@ -91,7 +91,7 @@ export default {
       movies: [],
       filteredMovies: [],
       filter: false,
-      minRating: 5,
+      minRating: 0,
       maxRating: 10,
       minRelease: 1910,
       maxRelease: 2022,
