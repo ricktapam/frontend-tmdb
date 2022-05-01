@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-white text-3xl mt-5">Trending</h1>
   <div v-if="showLessMovies">
-    <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
       <div
         v-for="movie in movies.slice(0, 5)"
         v-bind:key="movie.id"
@@ -14,7 +14,7 @@
               ><h2 class="dui-card-title">{{ movie.original_title }}</h2></router-link>
           <p class="md:hidden"></p>
           <p class="hidden md:block">{{ movie.overview.substring(0, 175) }}...</p>
-          <div class="dui-card-actions justify-end">
+          <div class="dui-card-actions justify-center md:justify-end">
             <router-link :to="`/movie/${movie.id}`"
               ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
             >
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div v-else>
-    <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 mt-5">
       <div
         v-for="movie in movies"
         v-bind:key="movie.id"
@@ -37,7 +37,7 @@
               ><h2 class="dui-card-title">{{ movie.original_title }}</h2></router-link>
           <p class="md:hidden"></p>
           <p class="hidden md:block">{{ movie.overview.substring(0, 175) }}...</p>
-          <div class="dui-card-actions justify-end">
+                    <div class="dui-card-actions justify-center md:justify-end">
             <router-link :to="`/movie/${movie.id}`"
               ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
             >

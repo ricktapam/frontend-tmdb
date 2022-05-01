@@ -46,11 +46,11 @@
               ><h2 class="dui-card-title">{{ movie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ movie.overview.substring(0, 150) }}...</p>
-            <div class="dui-card-actions justify-end">
-              <router-link :to="`/movie/${movie.id}`"
-                ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
-              >
-            </div>
+                      <div class="dui-card-actions justify-center md:justify-end">
+            <router-link :to="`/movie/${movie.id}`"
+              ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+            >
+          </div>
           </div>
         </div>
       </div>
@@ -72,11 +72,11 @@
               ><h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ filteredmovie.overview.substring(0, 150) }}...</p>
-            <div class="dui-card-actions justify-end">
-              <router-link :to="`/movie/${filteredmovie.id}`"
-                ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
-              >
-            </div>
+                      <div class="dui-card-actions justify-center md:justify-end">
+            <router-link :to="`/movie/${filteredmovie.id}`"
+              ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+            >
+          </div>
           </div>
         </div>
       </div>

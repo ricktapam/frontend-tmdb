@@ -28,7 +28,7 @@
   
 
 <div v-if="!filter">
-  <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-4 mt-5">
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4 mt-5">
     <div
       v-for="movie in movies"
       v-bind:key="movie.id"
@@ -41,11 +41,11 @@
               ><h2 class="dui-card-title">{{ movie.original_title }}</h2></router-link>
         <p class="md:hidden"></p>
         <p class="hidden md:block">{{ movie.overview.substring(0, 175) }}...</p>
-        <div class="dui-card-actions justify-end">
-          <router-link :to="`/movie/${movie.id}`"
-            ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
-          >
-        </div>
+                  <div class="dui-card-actions justify-center md:justify-end">
+            <router-link :to="`/movie/${movie.id}`"
+              ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+            >
+          </div>
       </div>
     </div>
   </div>
@@ -67,11 +67,11 @@
               ><h2 class="dui-card-title">{{ filteredmovie.original_title }}</h2></router-link>
             <p class="md:hidden"></p>
             <p class="hidden md:block">{{ filteredmovie.overview.substring(0, 150) }}...</p>
-            <div class="dui-card-actions justify-end">
-              <router-link :to="`/movie/${filteredmovie.id}`"
-                ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
-              >
-            </div>
+                      <div class="dui-card-actions justify-center md:justify-end">
+            <router-link :to="`/movie/${filteredmovie.id}`"
+              ><button class="dui-btn dui-btn-primary max-w-[95%]">Details</button></router-link
+            >
+          </div>
           </div>
         </div>
       </div>
