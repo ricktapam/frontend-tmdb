@@ -28,7 +28,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/ricktapam.github.io.frontend/'),
   routes,
 });
 
