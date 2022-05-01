@@ -87,7 +87,7 @@
 
 <script>
 const { MovieDb } = require("moviedb-promise");
-const moviedb = new MovieDb("17e6273050ea3134a10b4dc39a15bfff");
+const moviedb = new MovieDb(process.env.VUE_APP_MOVIE_DB_KEY);
 
 import MovieTrailer from "@/components/MovieTrailer.vue";
 
