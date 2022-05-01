@@ -1,4 +1,4 @@
-# tmdb
+# Frontend case
 
 ## Project setup
 
